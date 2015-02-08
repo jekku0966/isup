@@ -2,8 +2,8 @@ import requests, json
 
 # Local testing area
 #keyword = raw_input('Enter keyword(ie. !up or !ups) : ')
-search = payload.json("text": "%s")
-trigger_word = '!up'
+search = requests.get(json.payload("text": "%s", "trigger_word": "!up"))
+
 
 if search == 'help':
 	payload = {"text": "I look up given address and tell you if it's up or naw."}
