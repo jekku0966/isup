@@ -14,7 +14,7 @@ def post_message(text):
 
 
 if keyword == '!up':
-	search = text[3:]
+	search = text[4:]
 	out = 'http://www.'+search
 	outs = 'https://www.'+search
 	conn = requests.get(out)
