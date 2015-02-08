@@ -1,12 +1,11 @@
 import requests, json
 from slacker import Slacker
 
-
 slack = Slacker('xoxp-3478131362-3477154371-3505081635-51a8a0')
 username = 'upbot'
 icon_emoji = 'mag'
-commands = ['up', 'up help']
-search = '!up reddit.com'
+commands = ['up']
+
 
 def post_message(text):
 	slack.chat.post_message(text = text,
@@ -17,7 +16,7 @@ def need_help():
 	post_message('I look up given address and tell you if it\'s up or naw.')
 
 def respond():
-	search = commands + text
+	search = text - command
 	out = 'http://www.'+search
 	conn = requests.get(out)
 	status = conn.status_code
@@ -28,19 +27,15 @@ def respond():
 		slack.chat.post_message(search + 'is down. Check back later.')
 
 def main():
-	msguser = request.form.get("user_name", "").strip()
-	if msguser == username or msguser.lower() == "slackbot":
-		return
-
-		text = request.form.get("text", "")
-		match = re.findall(r"!(\S+)", text)
+	text = request.form.get("text", "")
+	match = re.findall(r"!(\S+)", text)
 
 	if not match:
 		return
 
 		command = match[0]
-   	#args = text.replace("!%s" % command, '')
-   	#command = command.lower()
+   	args = text.replace("!%s" % command, '')
+   	command = command.lower()
    
 	if command not in commands:
 		post_message('Not sure what "%s" is.' % command)
@@ -48,8 +43,7 @@ def main():
 
 	if command == 'up':
 		respond()
-
-	if command == 'up help':
+	if command == 'up' and 'help':
 		need_help()
 
 	return json.dumps({ })
