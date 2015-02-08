@@ -1,1 +1,1 @@
-web: python isup_requests.py
+worker: python isup_requests.py
