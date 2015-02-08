@@ -21,33 +21,34 @@ def respond():
 	conn = requests.get(out)
 	status = conn.status_code
 
-		if  status == 200:
-			slack.chat.post_message(search + ' is up. It\'s just you.')
-		else:
-			slack.chat.post_message(search + 'is down. Check back later.')
+	if  status == 200:
+		slack.chat.post_message(search + ' is up. It\'s just you.')
+	else:
+		slack.chat.post_message(search + 'is down. Check back later.')
 
 def main():
-	 msguser = request.form.get("user_name", "").strip()
-    if msguser == username or msguser.lower() == "slackbot": return
+	msguser = request.form.get("user_name", "").strip()
+	if msguser == username or msguser.lower() == "slackbot":
+		return
 
-    text = request.form.get("text", "")
+		text = request.form.get("text", "")
+		match = re.findall(r"!(\S+)", text)
 
-    match = re.findall(r"!(\S+)", text)
-    if not match: return
+	if not match:
+		return
 
-    command = match[0]
-    args = text.replace("!%s" % command, '')
-    command = command.lower()
-    
-    if command not in commands:
-        post_message('Not sure what "%s" is.' % command)
-        return json.dumps({ })
+		command = match[0]
+   	args = text.replace("!%s" % command, '')
+   	command = command.lower()
+   
+	if command not in commands:
+		post_message('Not sure what "%s" is.' % command)
+		return json.dumps({ })
 
-    if command == 'up':
-    	respond()
-    if command == 'up help'
-    	need_help()
+	if command == 'up':
+		respond()
 
+	if command == 'up help':
+		need_help()
 
-
-   return json.dumps({ })
+	return json.dumps({ })
