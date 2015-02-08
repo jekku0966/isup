@@ -1,5 +1,8 @@
 import requests, json
 from slacker import Slacker
+from flask import  Flask, request
+
+text = '!up reddit.com'
 
 slack = Slacker('xoxp-3478131362-3477154371-3505081635-51a8a0')
 username = 'upbot'
@@ -13,7 +16,7 @@ def post_message(text):
 													icon_emoji = icon_emoji)
 
 def need_help():
-	post_message('I look up given address and tell you if it\'s up or naw.')
+	post_message('I look up given address and tell you if it\'s up or naw with command !up \%URL%.')
 
 def respond():
 	search = text - command
@@ -22,9 +25,11 @@ def respond():
 	status = conn.status_code
 
 	if  status == 200:
-		slack.chat.post_message(search + ' is up. It\'s just you.')
+		#slack.chat.post_message(search + ' is up. It\'s just you.')
+		print search + ' is up. It\'s just you.'
 	else:
-		slack.chat.post_message(search + 'is down. Check back later.')
+		#slack.chat.post_message(search + 'is down. Check back later.')
+		print search + 'is down. Check back later.'
 
 def main():
 	text = request.form.get("text", "")
