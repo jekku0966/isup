@@ -1,1 +1,1 @@
-web: gunicorn isup_requests.py:app
+web: gunicorn isup_requests:app
