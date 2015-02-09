@@ -28,8 +28,8 @@ def response():
 		status1 = conn1.status_code
 
 		if status == 200 or status1 == 200:
-			#post_message(search + ' is up. It\'s just you.')
-			print search + ' is up. It\'s just you.'
+			post_message(search + ' is up. It\'s just you.')
+			#print search + ' is up. It\'s just you.'
 		else:
-			#post_message(search + ' is down. Check back later.')
-			print search + ' is down. Check back later.'
+			post_message(search + ' is down. Check back later.')
+			#print search + ' is down. Check back later.'
