@@ -4,8 +4,9 @@ from slacker import Slacker
 slack = Slacker('xoxp-3478131362-3477154371-3505081635-51a8a0')
 username = 'upbot'
 icon_emoji = ':mag:'
-keyword = '!up'
-text = ''
+trigger_word = '!up'
+keyword = trigger_word
+text = 'facebook.com'
 
 
 
@@ -23,8 +24,8 @@ if keyword == '!up':
 	status1 = conn1.status_code
 
 	if status == 200 or status1 == 200:
-		post_message(search + ' is up. It\'s just you.')
-		#print search + ' is up. It\'s just you.'
+		#post_message(search + ' is up. It\'s just you.')
+		print search + ' is up. It\'s just you.'
 	else:
-		post_message(search + ' is down. Check back later.')
-		#print search + ' is down. Check back later.'
+		#post_message(search + ' is down. Check back later.')
+		print search + ' is down. Check back later.'
