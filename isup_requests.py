@@ -2,7 +2,7 @@ import requests
 from slacker import Slacker
 
 #Slack related
-slack = Slacker('xoxp-3478131362-3477154371-3505081635-51a8a0')
+slack = Slacker('')
 #channel = '#developers'
 username = 'upbot'
 icon_emoji = ':mag:'
