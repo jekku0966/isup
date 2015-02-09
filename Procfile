@@ -1,1 +1,1 @@
-web: python isup_requests.py
+web: gubicorn isup_requests.py:app
