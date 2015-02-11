@@ -1,3 +1,2 @@
 requests==2.5.1
-slacker==0.5.5
 cherrypy==3.6.0
