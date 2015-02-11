@@ -13,6 +13,7 @@ class IsUp(object):
     def POST(self, **kwargs):
        # Uncomment for json console output
        #print cherrypy.request.json
+       #base_url = cherrypy.request.base+'&parse=none'
 
        # Parse received json
        json_parse = json.dumps(cherrypy.request.json)
@@ -23,19 +24,18 @@ class IsUp(object):
        # Select only the first 3 from the trigger
        keyword = trigger[:3]
        # Select only from the 4th letter to the end
-       url = trigger[12:]
+       url = trigger[4:]
 
        # Uncomment for console output of keyword and url
-       #print keyword
-       #print url
+       print keyword
+       print url
 
        if keyword == '!up':
 
-           search = url
            # Morph url as normal HTTP
-           out = 'http://www.'+search
+           out = 'http://www.'+url
            # Morph url as HTTPS
-           outs = 'https://www.'+search
+           outs = 'https://www.'+url
            # Check for HTTP signal
            conn = requests.get(out)
            # Check for HTTPS signal
@@ -48,9 +48,9 @@ class IsUp(object):
 
            # Wheter the status for HTTP or HTTPS is 200/OK return URL is up otherwise return it's down
            if status == 200 or status1 == 200:
-               return json.dumps(search + ' is up. It\'s just you.')
+               return url+' is up. It\'s just you.'
            else:
-               return json.dumps(search + ' is down. Check back later.')
+               return url+' is down. Check back later.'
     
 
         
