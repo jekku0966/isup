@@ -10,7 +10,7 @@ class IsUp(object):
     @cherrypy.tools.json_in()
     
 
-    def POST(self):
+    def POST(self, **kwargs):
        # Uncomment for json console output
        #print cherrypy.request.json
 
@@ -23,7 +23,7 @@ class IsUp(object):
        # Select only the first 3 from the trigger
        keyword = trigger[:3]
        # Select only from the 4th letter to the end
-       url = trigger[4:]
+       url = trigger[12:]
 
        # Uncomment for console output of keyword and url
        #print keyword
@@ -55,5 +55,5 @@ class IsUp(object):
 
         
 if __name__ == '__main__':
-    #cherrypy.config.update("server.conf")
+    cherrypy.config.update("server.conf")
     cherrypy.quickstart(IsUp(), '/', "app.conf")
