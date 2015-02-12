@@ -5,25 +5,25 @@ import requests
 class IsUp(object):
     exposed = True
     # Make cherrypy accept json
-    @cherrypy.tools.accept(media='application/json')
+    @cherrypy.tools.accept(media='application/x-www-form-urlencoded')
     # Make cherrypy understand json
     @cherrypy.tools.json_in()
     
 
     def POST(self, **kwargs):
        # Uncomment for json console output
-       #print cherrypy.request.json
-       #base_url = cherrypy.request.base+'&parse=none'
+       print cherrypy.request.json
 
        # Parse received json
        json_parse = json.dumps(cherrypy.request.json)
        # Decode the json
        decoded = json.loads(json_parse)
+       print decoded
        # Transfer decoded json from {"message":{"text": "!up google.com"}} to trigger
        trigger = decoded['message']['text']
        # Select only the first 3 from the trigger
        keyword = trigger[:3]
-       # Select only from the 4th letter to the end
+       # Split !up <http:\/\/google.com|google.com to 2 different with from | and select the latter and remove '>'
        url = trigger.split('|')[1][:-1]
 
        # Uncomment for console output of keyword and url

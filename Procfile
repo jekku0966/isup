@@ -1,1 +1,1 @@
-web: python isup.py ${PORT}
+web: python isup.py
