@@ -3,7 +3,9 @@ A tool to check whether a given url is up or not.
 
 Currently only works with plain json requests, ie. "!up reddit.com"
 
-If there's some other kind of formatting, ie. "!up <'http:\/\/google.com|google.com>", it'll fail.
+~~If there's some other kind of formatting, ie. "!up <'http:\/\/google.com|google.com>", it'll fail.~~
 
 TODO:
-* Find a way to strip formatting to bare text.
+~~* Find a way to strip formatting to bare text.~~ 
+
+Thanks to /u/m3lkor001 at /r/learnpython for helping me to solve the parsin issue. 
