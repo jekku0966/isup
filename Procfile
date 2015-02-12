@@ -1,1 +1,1 @@
-web: python isup.py
+web: python -u isup.py
