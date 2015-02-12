@@ -24,11 +24,11 @@ class IsUp(object):
        # Select only the first 3 from the trigger
        keyword = trigger[:3]
        # Select only from the 4th letter to the end
-       url = trigger[4:]
+       url = trigger.split('|')[1][:-1]
 
        # Uncomment for console output of keyword and url
-       print keyword
-       print url
+       #print keyword
+       #print url
 
        if keyword == '!up':
 
