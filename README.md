@@ -4,6 +4,8 @@
 
 A tool to check whether a given url is up or not.
 
+I have no previous python coding experience except codecademy.com python course. I think I did a pretty good job on doing this.
+
 
 
 ~~Currently only works with plain json requests, ie. "!up reddit.com"~~
@@ -15,3 +17,8 @@ TODO:
 * Find a way to check Slack Outgoing webhook Content-Type to make this actually work as it should.
 
 Thanks to /u/m3lkor001 at /r/learnpython for helping me to solve the parsing issue. 
+
+### TODO:
+* Streamline the code for faster response (duh)
+* ????
+* Profit
