@@ -30,19 +30,24 @@ class IsUp(object):
        print url
 
        if keyword == '!up':
-        # Morph url as normal HTTP
-        out = 'http://www.'+url
-        # Morph url as HTTPS
-        outs = 'https://www.'+url
-        # Check for HTTP signal
-        conn = requests.get(out)
-        # Check for HTTPS signal
-        conn1 = requests.get(outs)
-        # Ask the status 200/OK for HTTP
-        status = conn.status_code
-        # Ask the status 200/OK for HTTPS
-        status1 = conn1.status_code
-        if status == 200 or status1 == 200:
+        try:
+          out = 'http://'+url
+          conn = requests.get(out)
+          status = conn.status_code
+        except Exception:
+          try:
+            out1 = 'http://www'+url
+            conn1 = requests.get(out1)
+            status1 = conn1.status_code
+          except Exception:
+            try:
+              out2 = 'https://www'+url
+              conn2 = requests.get(out2)
+              status2 = conn2.status_code
+            except Exception:
+              return json.dumps({'text': 'Given url doesn\'t exist.'})
+
+        if status == 200 or status1 == 200 or status2 == 200:
           return json.dumps({'text': '%s is up. It\'s just you.' % url})
         else:
           return json.dumps({'text':'%s is down. Check back later.' % url})
