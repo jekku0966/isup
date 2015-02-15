@@ -5,6 +5,8 @@ import requests
 
 class IsUp(object):
     exposed = True
+    def GET(self):
+      return json.dumps({'text': 'I\'m ALIVE!'})
   
     def POST(self, **kwargs):
       # Uncomment console output
@@ -35,20 +37,20 @@ class IsUp(object):
         # If any exception is occurred try the next one
         except Exception as e:
           print e
-          try:
-            out1 = 'http://www'+url
-            conn1 = requests.get(out1)
-            status1 = conn1.status_code
-          except Exception as e:
-            print e
-            try:
-              out2 = 'https://www'+url
-              conn2 = requests.get(out2)
-              status2 = conn2.status_code
-            except Exception as e:
-              print e
-              # Finally return an error if URI can't be resolved
-              return json.dumps({'text': 'Given url doesn\'t exist or I can\'t resolve it. Please check the validity of the URI.'})
+        try:
+           out1 = 'http://www'+url
+           conn1 = requests.get(out1)
+           status1 = conn1.status_code
+        except Exception as e:
+          print e
+        try:
+          out2 = 'https://www'+url
+          conn2 = requests.get(out2)
+          status2 = conn2.status_code
+        except Exception as e:
+          print e
+          # Finally return an error if URI can't be resolved
+          return json.dumps({'text': 'Given url doesn\'t exist or I can\'t resolve it. Please check the validity of the URI.'})
 
         # Return the answer. Either it's up or down.
         if status == 200 or status1 == 200 or status2 == 200:

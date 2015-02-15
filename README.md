@@ -8,6 +8,8 @@ I have no previous python coding experience except codecademy.com python course 
 
 And we have a working copy!
 
+![Screenshot](/static/upBot.jpg?raw=true "Screenshot")
+
 
 Thanks to /u/m3lkor001 at /r/learnpython for helping me to solve the parsing issue. 
 
