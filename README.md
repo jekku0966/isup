@@ -8,6 +8,8 @@ I have no previous python coding experience except codecademy.com python course 
 
 And we have a working copy!
 
+If you want to use this in you Slack community create an outgoing webhook with the keyword '!up' and use http://isup.herokuapp.com as the url.
+
 ![Screenshot](/static/upBot.png?raw=true "Screenshot")
 
 
